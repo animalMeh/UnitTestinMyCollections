@@ -10,6 +10,7 @@ namespace BracketsTest
         [TestMethod]
         public void TestMethod1()
         {
+            // expected | what needs test
             Assert.AreEqual(true, StackUsing.CheckBKT("([{}])()[]<[()]>"));
         }
     }

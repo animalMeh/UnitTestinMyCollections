@@ -25,22 +25,22 @@ namespace MyCollections
                     case ')':
                         if (stack.Count == 0) return false;
                         var lastBkt = stack.Pop();
-                        if (lastBkt != ')') return false;
+                        if (lastBkt != '(') return false;
                         break;
                     case ']':
                         if (stack.Count == 0) return false;
                         var lastBkt1 = stack.Pop();
-                        if (lastBkt1 != ']') return false;
+                        if (lastBkt1 != '[') return false;
                         break;
                     case '}':
                         if (stack.Count == 0) return false;
                         var lastBkt2 = stack.Pop();
-                        if (lastBkt2 != '}') return false;
+                        if (lastBkt2 != '{') return false;
                         break;
                     case '>':
                         if (stack.Count == 0) return false;
                         var lastBkt3 = stack.Pop();
-                        if (lastBkt3 != '>') return false;
+                        if (lastBkt3 != '<') return false;
                         break;
                     default:continue;
                 }
