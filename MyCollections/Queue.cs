@@ -46,49 +46,54 @@ namespace MyCollections
         }
         #endregion
 
-        public class QueueEnumerator : IEnumerator<T>
-        {
-            Queue<T> queue;
-            QueueItem<T> item;
+        //public class QueueEnumerator : IEnumerator<T>
+        //{
+        //    Queue<T> queue;
+        //    QueueItem<T> item;
 
-            public QueueEnumerator(Queue<T> queue)
-            {
-                this.queue = queue;
-                item = null;
-            }
+        //    public QueueEnumerator(Queue<T> queue)
+        //    {
+        //        this.queue = queue;
+        //        item = null;
+        //    }
 
+        //    public T Current
+        //    {
+        //        get { return item.Value; }
+        //    }
+        //    object IEnumerator.Current
+        //    {
+        //        get { return this.Current; }
+        //    }
 
-            public T Current
-            {
-                get { return item.Value; }
-            }
-            object IEnumerator.Current
-            {
-                get { return this.Current; }
-            }
+        //    public bool MoveNext()
+        //    {
+        //        if (item == null)
+        //            item = queue.head;
+        //        else item = item.Next;
+        //        return item != null;
+        //    }
 
-            public bool MoveNext()
-            {
-                if (item == null)
-                    item = queue.head;
-                else item = item.Next;
-                return item != null;
-            }
+        //    public void Dispose()
+        //    {
 
-            public void Dispose()
-            {
+        //    }
 
-            }
+        //    public void Reset()
+        //    {
 
-            public void Reset()
-            {
-
-            }
-        }
+        //    }
+        //}
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new QueueEnumerator(this);
+            //return new QueueEnumerator(this);
+            var current = head;
+            while(current!= null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
         }
 
         //explicit implementation interface's members
