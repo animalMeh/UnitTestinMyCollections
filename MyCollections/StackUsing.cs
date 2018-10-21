@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
+
 
 namespace MyCollections
 {
@@ -32,6 +32,35 @@ namespace MyCollections
                 };
             }
             return stack.Count == 0;
+        }
+
+        public static int ComputeFromPolis_Int32(string str)
+        {
+            var stack = new Stack<int>();
+            var op = new Dictionary<char, Func<int, int, int>>();
+            op['+'] = (a, b) => a + b;
+            op['*'] = (a, b) => a * b;
+            op['-'] = (a, b) => a - b;
+            op['/'] = (a, b) => a / b;
+
+
+            
+            foreach (var symbol in str)
+            {
+                if (symbol <= '9' && '0' <= symbol)
+                {
+                    stack.Push(Convert.ToInt32(symbol));
+                    continue;
+                }
+                else if (op.Keys.Contains(symbol))
+                {
+                    var ar1 = stack.Pop();
+                    var ar2 = stack.Pop();
+                    stack.Push(op[symbol](ar1, ar2));
+                }
+                else throw new Exception("unexpected symbol " + symbol);
+            }
+            return stack.Pop();
         }
     }
 }

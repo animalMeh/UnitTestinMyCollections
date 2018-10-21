@@ -37,10 +37,30 @@ namespace BracketsTest
         {
             Assert.AreEqual(true, StackUsing.CheckBKT(""));
         }
-
+        [TestMethod]
         public void TestWithoutBrackets()
         {
             Assert.AreEqual(true, StackUsing.CheckBKT("alksdlasdl"));
         }
+
+        [TestMethod]
+        void TestSummary()
+        {
+            Assert.AreEqual(7, StackUsing.ComputeFromPolis_Int32("2+5"));
+        }
+
+        [TestMethod]
+        void TestMultyply()
+        {
+            Assert.AreEqual(6, StackUsing.ComputeFromPolis_Int32("2*3"));
+        }
+
+        [TestMethod]
+        void TestSumAndMul()
+        {
+            Assert.AreEqual(25, "23+5*");
+        }
+
     }
+    
 }
