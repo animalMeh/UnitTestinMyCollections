@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace MyCollections
 {
@@ -12,38 +13,23 @@ namespace MyCollections
         public static bool CheckBKT(string str)
         {
             var stack = new Stack<char>();
-            foreach(var symb in str)
+            var dict = new Dictionary<char, char>();
+            dict['('] = ')';
+            dict['['] = ']';
+            dict['{'] = '}';
+            dict['<'] = '>';
+            foreach (var symb in str)
             {
-                switch (symb)
+                if (dict.Keys.Contains(symb))
                 {
-                    case '(':
-                    case '[':
-                    case '{':
-                    case '<':
-                        stack.Push(symb);
-                        break;
-                    case ')':
-                        if (stack.Count == 0) return false;
-                        var lastBkt = stack.Pop();
-                        if (lastBkt != '(') return false;
-                        break;
-                    case ']':
-                        if (stack.Count == 0) return false;
-                        var lastBkt1 = stack.Pop();
-                        if (lastBkt1 != '[') return false;
-                        break;
-                    case '}':
-                        if (stack.Count == 0) return false;
-                        var lastBkt2 = stack.Pop();
-                        if (lastBkt2 != '{') return false;
-                        break;
-                    case '>':
-                        if (stack.Count == 0) return false;
-                        var lastBkt3 = stack.Pop();
-                        if (lastBkt3 != '<') return false;
-                        break;
-                    default:continue;
+                    stack.Push(symb);
                 }
+                else if (dict.Values.Contains(symb))
+                {
+                    if (stack.Count == 0) return false;
+                    var lastBkt = stack.Pop();
+                    if (dict[lastBkt] != symb) return false;
+                };
             }
             return stack.Count == 0;
         }

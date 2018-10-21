@@ -31,5 +31,16 @@ namespace BracketsTest
         {
             Assert.AreEqual(false, StackUsing.CheckBKT("))()"));
         }
+
+        [TestMethod]
+        public void TestEmptyString()
+        {
+            Assert.AreEqual(true, StackUsing.CheckBKT(""));
+        }
+
+        public void TestWithoutBrackets()
+        {
+            Assert.AreEqual(true, StackUsing.CheckBKT("alksdlasdl"));
+        }
     }
 }
