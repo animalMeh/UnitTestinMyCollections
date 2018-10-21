@@ -42,14 +42,12 @@ namespace MyCollections
             op['*'] = (a, b) => a * b;
             op['-'] = (a, b) => a - b;
             op['/'] = (a, b) => a / b;
-
-
             
             foreach (var symbol in str)
             {
-                if (symbol <= '9' && '0' <= symbol)
+                if (char.IsNumber(symbol))
                 {
-                    stack.Push(Convert.ToInt32(symbol));
+                    stack.Push(symbol - '0');
                     continue;
                 }
                 else if (op.Keys.Contains(symbol))

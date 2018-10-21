@@ -44,21 +44,21 @@ namespace BracketsTest
         }
 
         [TestMethod]
-        void TestSummary()
+        public void TestSummary()
         {
-            Assert.AreEqual(7, StackUsing.ComputeFromPolis_Int32("2+5"));
+            Assert.AreEqual(7, StackUsing.ComputeFromPolis_Int32("25+"));
         }
 
         [TestMethod]
-        void TestMultyply()
+        public void TestMultyply()
         {
-            Assert.AreEqual(6, StackUsing.ComputeFromPolis_Int32("2*3"));
+            Assert.AreEqual(6, StackUsing.ComputeFromPolis_Int32("23*"));
         }
 
         [TestMethod]
-        void TestSumAndMul()
+        public void TestSumAndMul()
         {
-            Assert.AreEqual(25, "23+5*");
+            Assert.AreEqual(25, StackUsing.ComputeFromPolis_Int32("23+5*"));
         }
 
     }
